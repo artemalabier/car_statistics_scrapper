@@ -1,0 +1,10 @@
+{
+  "Porsche 996 all": {
+    "PL": "https://www.olx.pl/motoryzacja/samochody/porsche/?search%5Border%5D=filter_float_price:asc&search%5Bfilter_enum_model%5D%5B0%5D=911&search%5Bfilter_float_year:from%5D=1998&search%5Bfilter_float_year:to%5D=2003&search%5Bfilter_float_enginepower:to%5D=330&search%5Bfilter_enum_condition%5D%5B0%5D=notdamaged&search%5Bfilter_enum_country_origin%5D%5B0%5D=pl",
+    "PT": "https://www.olx.pt/carros-motos-e-barcos/carros/porsche/?search%5Border%5D=filter_float_price:asc&search%5Bfilter_enum_modelo%5D%5B0%5D=911&search%5Bfilter_float_year:from%5D=1998&search%5Bfilter_float_year:to%5D=2003&search%5Bfilter_float_engine_power:to%5D=330&search%5Bfilter_enum_gearbox%5D%5B0%5D=manual"
+  },
+    "Porsche 986 all": {
+    "PL": "https://www.olx.pl/motoryzacja/samochody/porsche/?search%5Border%5D=filter_float_price:asc&search%5Bfilter_enum_model%5D%5B0%5D=boxster&search%5Bfilter_float_year:from%5D=1998&search%5Bfilter_float_year:to%5D=2003&search%5Bfilter_float_enginepower:to%5D=330&search%5Bfilter_enum_condition%5D%5B0%5D=notdamaged&search%5Bfilter_enum_country_origin%5D%5B0%5D=pl",
+    "PT": "https://www.olx.pt/carros-motos-e-barcos/carros/porsche/?search%5Border%5D=filter_float_price:asc&search%5Bfilter_enum_modelo%5D%5B0%5D=boxster&search%5Bfilter_float_year:from%5D=1998&search%5Bfilter_float_year:to%5D=2003&search%5Bfilter_float_engine_power:to%5D=330"
+    }
+}

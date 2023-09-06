@@ -3,7 +3,7 @@ from statistics import median
 import requests
 
 
-def calculate_price_coefficient(car_data_pl, car_data_pt):
+"""def calculate_price_coefficient(car_data_pl, car_data_pt):
     try:
         # Calculate the median price for cars in Poland
         prices_pl = [car['price_pln'] for car in car_data_pl]
@@ -20,7 +20,30 @@ def calculate_price_coefficient(car_data_pl, car_data_pt):
 
     except Exception as e:
         print(f'An error occurred: {str(e)}')
-        return None
+        return None"""
+
+
+def calculate_price_coefficients(all_cars_data):
+    coefficients = []
+
+    for car_data in all_cars_data:
+        car_name, data = list(car_data.items())[0]
+        pl_data = data[0]["PL"]
+        pt_data = data[1]["PT"]
+
+        prices_pl = [car.price for car in pl_data if car.price != 'N/A']
+        prices_pt = [car.price for car in pt_data if car.price != 'N/A']
+
+        if prices_pl and prices_pt:
+            median_price_pl = median(prices_pl)
+            median_price_pt = median(prices_pt)
+
+            price_difference = median_price_pt - median_price_pl
+            percentage_difference = round((price_difference / median_price_pl) * 100, 1)
+
+            coefficients.append({car_name: percentage_difference})
+
+    return coefficients
 
 
 def get_exchange_rate():
