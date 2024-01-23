@@ -15,8 +15,8 @@ class Car:
 
 
 def fetch_olx_car_data(url):
-    #eur_to_pln_rate = get_exchange_rate()
     eur_to_pln_rate = 4.576452
+    eur_to_pln_rate = get_exchange_rate()
 
     try:
         response = requests.get(url)
