@@ -3,6 +3,7 @@ from statistics import median
 import requests
 
 
+#
 """def calculate_price_coefficient(car_data_pl, car_data_pt):
     try:
         # Calculate the median price for cars in Poland
