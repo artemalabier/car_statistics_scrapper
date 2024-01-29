@@ -43,7 +43,7 @@ if __name__ == '__main__':
     # Create separate collections of Car objects for each URL using cars_to_set()
     collected_cars = collecting_cars(model_urls)
 
-    # Print or further process the collected car data
+    #Print or further process the collected car data
     '''for car_data in collected_cars:
         for car_name, data in car_data.items():
             print(car_name)
