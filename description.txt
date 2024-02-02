@@ -1,3 +1,0 @@
-1. This parser gets a certain data (model/year/mileage/price) for similar cars in PL an PT
-2. Shows price differences/trends (prices should be converted based on today's PLN/EUR rate)
-3. Reflects the received data in charts for each car's option
