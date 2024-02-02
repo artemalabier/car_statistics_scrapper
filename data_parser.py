@@ -3,7 +3,7 @@ import re
 
 
 def extract_price(price_text, eur_to_pln_rate):
-    # Use regular expressions to extract the numeric part of the price
+    #Use regular expressions to extract the numeric part of the price
     price_match = re.search(r'([\d\s,]+[.,]*[\d]*)', price_text)
 
     if price_match:
