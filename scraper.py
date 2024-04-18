@@ -1,17 +1,23 @@
 import urllib
 import requests
+
+from dataclasses import dataclass
 from bs4 import BeautifulSoup
-
-from analysis import get_exchange_rate
-from data_parser import extract_price
+from data_parser import extract_price, get_exchange_rate
 
 
+@dataclass(frozen=True)
 class Car:
-    def __init__(self, id, title, link, price):
-        self.id = id
-        self.title = title
-        self.link = link
-        self.price = price
+    id: int
+    title: str
+    link: str
+    price: float
+
+    def __eq__(self, other):
+        return isinstance(other, Car) and self.id == other.id
+
+    def __hash__(self):
+        return hash(self.id)
 
 
 def fetch_olx_car_data(url):
@@ -22,30 +28,23 @@ def fetch_olx_car_data(url):
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-
-            # Find all car listings
             car_listings = soup.find_all('div', {'data-cy': 'l-card'})
-
-            # Create a set to store Car objects
             cars = set()
 
             for car_listing in car_listings:
-                # Extract data for each car listing
                 id = car_listing['id']
 
                 title_elem = car_listing.find('h6', class_='css-16v5mdi er34gjf0')
-                title = title_elem.text.strip() if title_elem else 'N/A'
+                title = title_elem.text.strip() if title_elem else None
 
-                link_elem = car_listing.findNext('a', class_='css-rc5s2u')
-                link = link_elem['href'] if link_elem and 'href' in link_elem.attrs else 'N/A'
+                link_elem = car_listing.findNext('a', class_='css-z3gu2d')
+                link = link_elem.get('href', None) if link_elem else None
                 if link.startswith('/'):
-                    # Add the base OLX URL to the PT link
                     link = urllib.parse.urljoin('https://www.olx.pt', link)
 
                 price_elem = car_listing.find('p', {'data-testid': 'ad-price'})
-                price = extract_price(price_elem.text.strip(), eur_to_pln_rate) if price_elem else 'N/A'
+                price = extract_price(price_elem.text.strip(), eur_to_pln_rate) if price_elem else None
 
-                # Create a Car instance and add it to the set
                 car = Car(id, title, link, price)
                 cars.add(car)
 
