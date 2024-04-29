@@ -3,7 +3,7 @@ import requests
 
 from dataclasses import dataclass
 from bs4 import BeautifulSoup
-from data_parser import extract_price, get_exchange_rate
+from src.data_parser import extract_price, get_exchange_rate
 
 
 @dataclass(frozen=True)
@@ -25,6 +25,7 @@ def fetch_olx_car_data(url):
 
     try:
         response = requests.get(url)
+        print(response)
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
@@ -46,6 +47,7 @@ def fetch_olx_car_data(url):
                 price = extract_price(price_elem.text.strip(), eur_to_pln_rate) if price_elem else None
 
                 car = Car(id, title, link, price)
+                print(car)
                 cars.add(car)
 
             return cars

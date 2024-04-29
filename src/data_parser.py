@@ -2,9 +2,10 @@ import json
 import re
 import requests
 import os
-from configuration import DEFAULT_EXCHANGE_RATE
+from conf.configuration import DEFAULT_EXCHANGE_RATE
 
 api_key = os.environ.get('EXCHANGE_API_KEY')
+
 
 def url_read(filename):
     try:
@@ -17,6 +18,7 @@ def url_read(filename):
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON data from file '{filename}': {str(e)}")
         raise
+
 
 def extract_price(price_text, eur_to_pln_rate):
     price_match = re.search(r'([\d\s,]+[.,]*[\d]*)', price_text)
@@ -31,6 +33,7 @@ def extract_price(price_text, eur_to_pln_rate):
             return round(price_in_eur)
 
     return 'N/A'
+
 
 def get_exchange_rate():
     try:

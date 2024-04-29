@@ -1,5 +1,5 @@
 from statistics import median
-from scraper import fetch_olx_car_data
+from src.scraper import fetch_olx_car_data
 
 def fetch_cars_for_country(country_url):
     return fetch_olx_car_data(country_url) or []

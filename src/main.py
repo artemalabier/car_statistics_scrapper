@@ -1,5 +1,5 @@
 from analysis import calculate_price_coefficients, collect_cars
-from configuration import FILENAME
+from conf.configuration import FILENAME
 from data_parser import url_read
 
 

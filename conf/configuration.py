@@ -1,2 +1,2 @@
 DEFAULT_EXCHANGE_RATE = 4.55
-FILENAME = 'URLs.json'
+FILENAME = 'conf/URLs.json'
